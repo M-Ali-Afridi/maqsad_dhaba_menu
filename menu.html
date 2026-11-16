@@ -86,7 +86,7 @@
                         </p>
                         <p class="food-price">Rs. 450</p>
                         <button class="order-button" type="button"
-                                onclick="showOrderMessage('Special Biryani')">
+                                onclick="openPaymentModal('Special Biryani', 'Rs. 450')">
                             Order Now
                         </button>
                     </div>
@@ -103,7 +103,7 @@
                         </p>
                         <p class="food-price">Rs. 500</p>
                         <button class="order-button" type="button"
-                                onclick="showOrderMessage('Chicken Handi')">
+                                onclick="openPaymentModal('Chicken Handi', 'Rs. 500')">
                             Order Now
                         </button>
                     </div>
@@ -120,7 +120,7 @@
                         </p>
                         <p class="food-price">Rs. 150</p>
                         <button class="order-button" type="button"
-                                onclick="showOrderMessage('Seekh Kabab')">
+                                onclick="openPaymentModal('Seekh Kabab (2 pieces)', 'Rs. 150')">
                             Order Now
                         </button>
                     </div>
@@ -137,7 +137,7 @@
                         </p>
                         <p class="food-price">Rs. 90</p>
                         <button class="order-button" type="button"
-                                onclick="showOrderMessage('Special Chai')">
+                                onclick="openPaymentModal('Special Chai', 'Rs. 90')">
                             Order Now
                         </button>
                     </div>
@@ -154,7 +154,7 @@
                         </p>
                         <p class="food-price">Rs. 180</p>
                         <button class="order-button" type="button"
-                                onclick="showOrderMessage('Dal Makhani')">
+                                onclick="openPaymentModal('Dal Makhani', 'Rs. 180')">
                             Order Now
                         </button>
                     </div>
@@ -163,17 +163,149 @@
         </section>
     </main>
 
+    <!-- Payment Selection & Order Confirmation Pop-up Modal -->
+    <div id="payment-modal" class="modal-overlay" role="dialog" aria-modal="true"
+         aria-labelledby="modal-title" hidden>
+        <div class="modal-card">
+            <button type="button" class="modal-close" aria-label="Close pop-up"
+                    onclick="closePaymentModal()">&times;</button>
+
+            <!-- Step 1: Choose Payment Method -->
+            <div id="selection-step">
+                <p class="eyebrow">COMPLETE YOUR ORDER</p>
+                <h2 id="modal-title">Which payment method do you want to select?</h2>
+                <p id="modal-item-summary" class="modal-item-summary"></p>
+
+                <div class="payment-options">
+                    <button type="button" class="payment-option"
+                            onclick="selectPaymentMethod(this, 'Cash on Delivery (COD)')">
+                        Cash on Delivery (COD)
+                    </button>
+                    <button type="button" class="payment-option"
+                            onclick="selectPaymentMethod(this, 'Card on Delivery (Card OD)')">
+                        Card on Delivery (Card OD)
+                    </button>
+                    <button type="button" class="payment-option"
+                            onclick="selectPaymentMethod(this, 'JazzCash')">
+                        JazzCash
+                    </button>
+                    <button type="button" class="payment-option"
+                            onclick="selectPaymentMethod(this, 'EasyPaisa')">
+                        EasyPaisa
+                    </button>
+                    <button type="button" class="payment-option"
+                            onclick="selectPaymentMethod(this, 'SadaPay / NayaPay')">
+                        SadaPay / NayaPay
+                    </button>
+                    <button type="button" class="payment-option"
+                            onclick="selectPaymentMethod(this, 'Bank Transfer (Raast)')">
+                        Bank Transfer (Raast)
+                    </button>
+                </div>
+
+                <p id="selection-status" class="selection-status" role="status"
+                   aria-live="polite" hidden></p>
+
+                <button id="confirm-order-btn" type="button"
+                        class="confirm-order-button"
+                        onclick="confirmOrder()" hidden>
+                    Confirm Order
+                </button>
+            </div>
+
+            <!-- Step 2: Final Delivery Pop-up -->
+            <div id="confirmation-step" class="confirmation-step" hidden>
+                <div class="check-badge">&#10003;</div>
+                <h2>Order Confirmed!</h2>
+                <p class="delivery-message">
+                    Your order will arrive in 30 minutes. Thank you for ordering!
+                </p>
+                <p id="confirmed-details" class="confirmed-details"></p>
+                <button type="button" class="order-button"
+                        onclick="closePaymentModal()">
+                    Back to Menu
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <p>Location: G-10 Markaz | Open since 2010</p>
         <p>&copy; 2026 Maqsad Dhaba. All rights reserved.</p>
     </footer>
 
     <script>
-        // This is a temporary message; it does not submit a real order yet.
-        function showOrderMessage(foodName) {
-            alert("You selected " + foodName +
-                  ". Online ordering will be available soon.");
+        let selectedFood = "";
+        let selectedPrice = "";
+        let selectedPayment = "";
+
+        const paymentModal = document.getElementById("payment-modal");
+        const selectionStep = document.getElementById("selection-step");
+        const confirmationStep = document.getElementById("confirmation-step");
+        const itemSummary = document.getElementById("modal-item-summary");
+        const selectionStatus = document.getElementById("selection-status");
+        const confirmOrderBtn = document.getElementById("confirm-order-btn");
+        const confirmedDetails = document.getElementById("confirmed-details");
+
+        function openPaymentModal(foodName, price) {
+            selectedFood = foodName;
+            selectedPrice = price;
+            selectedPayment = "";
+
+            // Reset modal back to Step 1
+            selectionStep.hidden = false;
+            confirmationStep.hidden = true;
+            selectionStatus.hidden = true;
+            confirmOrderBtn.hidden = true;
+
+            itemSummary.textContent = "Item: " + foodName + " (" + price + ")";
+
+            // Clear any previous active payment highlight
+            document.querySelectorAll(".payment-option").forEach(function(btn) {
+                btn.classList.remove("selected");
+            });
+
+            paymentModal.hidden = false;
         }
+
+        function selectPaymentMethod(clickedButton, methodName) {
+            selectedPayment = methodName;
+
+            document.querySelectorAll(".payment-option").forEach(function(btn) {
+                btn.classList.remove("selected");
+            });
+            clickedButton.classList.add("selected");
+
+            selectionStatus.textContent = "Successfully selected: " + methodName;
+            selectionStatus.hidden = false;
+            confirmOrderBtn.hidden = false;
+        }
+
+        function confirmOrder() {
+            if (!selectedPayment) return;
+
+            selectionStep.hidden = true;
+            confirmedDetails.textContent =
+                selectedFood + " (" + selectedPrice + ") • Paid via " + selectedPayment;
+            confirmationStep.hidden = false;
+        }
+
+        function closePaymentModal() {
+            paymentModal.hidden = true;
+        }
+
+        // Close modal if user clicks outside the card or presses Escape
+        paymentModal.addEventListener("click", function(event) {
+            if (event.target === paymentModal) {
+                closePaymentModal();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && !paymentModal.hidden) {
+                closePaymentModal();
+            }
+        });
     </script>
 
 </body>
