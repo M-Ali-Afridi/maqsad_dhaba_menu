@@ -13,3 +13,5 @@ Contains Information like phone number and email along with feedback option
 
 ChatGPT and Gemini were both used(Instructor was informed, because after usages, GPT was not working as intended and making not normal changes)
 
+https://github.com/M-Ali-Afridi/maqsad_dhaba_menu
+live link: https://m-ali-afridi.github.io/maqsad_dhaba_menu/contact.html
