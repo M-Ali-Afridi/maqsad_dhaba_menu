@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maqsad Dhaba | Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Shared navigation bar -->
+    <header class="site-header">
+        <a class="logo" href="index.html">MAQSAD DHABA</a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a class="active" href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <section class="contact-heading">
+            <p class="eyebrow">WE ARE HERE TO HELP</p>
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you!</p>
+        </section>
+
+        <!-- Contact details -->
+        <section class="contact-details">
+            <div class="contact-information">
+                <div class="contact-item">
+                    <h2>Call Us</h2>
+                    <p>
+                        <a href="tel:+923000000000">+92 300 000 0000</a>
+                    </p>
+                    <span class="sample-note">Sample number – replace with your actual number</span>
+                </div>
+
+                <div class="contact-item">
+                    <h2>Email Us</h2>
+                    <p>
+                        <a href="mailto:i263135@isb.nu.edu.pk">
+                            i263135@isb.nu.edu.pk
+                        </a>
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h2>Our Location</h2>
+                    <p>G-10 Markaz, Islamabad</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback form -->
+        <section class="feedback-section">
+            <p class="eyebrow">YOUR OPINION MATTERS</p>
+            <h2>Share Your Feedback</h2>
+            <p class="feedback-intro">
+                Let us know about your experience at Maqsad Dhaba.
+            </p>
+
+            <form id="feedback-form">
+                <label for="feedback">Your Feedback</label>
+                <textarea
+                    id="feedback"
+                    name="feedback"
+                    rows="6"
+                    placeholder="Write your feedback here..."
+                    required
+                ></textarea>
+
+                <button class="submit-button" type="submit">
+                    Submit Feedback
+                </button>
+            </form>
+
+            <p id="success-message" class="success-message" role="status"
+               aria-live="polite" hidden>
+                Your response has been recorded. Thank you!
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Location: G-10 Markaz | Open since 2010</p>
+        <p>&copy; 2026 Maqsad Dhaba. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const feedbackForm = document.getElementById("feedback-form");
+        const successMessage = document.getElementById("success-message");
+
+        feedbackForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            successMessage.hidden = false;
+            feedbackForm.reset();
+        });
+    </script>
+
+</body>
+</html>

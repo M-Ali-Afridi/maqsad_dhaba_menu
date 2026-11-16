@@ -405,3 +405,173 @@ body {
         font-size: 14px;
     }
 }
+
+
+/* ==============================
+   CONTACT PAGE
+   ============================== */
+
+.contact-page {
+    min-height: 75vh;
+    padding: 38px 7% 65px;
+    background-color: #24140e;
+}
+
+.contact-heading {
+    margin: 8px 0 32px;
+    text-align: center;
+}
+
+.contact-heading h1 {
+    margin: 8px 0;
+    color: #fff7ed;
+    font-size: 42px;
+}
+
+.contact-heading > p:last-child {
+    color: #ffc247;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.contact-details,
+.feedback-section {
+    max-width: 950px;
+    margin: 0 auto 28px;
+    padding: 30px;
+    border: 1px solid #9b602b;
+    border-radius: 10px;
+    background-color: #321b11;
+}
+
+.contact-information {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.contact-item h2 {
+    margin: 0 0 10px;
+    color: #ffc247;
+    font-size: 19px;
+}
+
+.contact-item p {
+    margin: 0;
+    color: #fff7ed;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.contact-item a {
+    color: #fff7ed;
+    text-decoration: underline;
+    text-decoration-color: #b87927;
+}
+
+.contact-item a:hover {
+    color: #ffc247;
+}
+
+.sample-note {
+    display: block;
+    margin-top: 6px;
+    color: #e8d8c8;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Feedback form */
+.feedback-section h2 {
+    margin: 8px 0;
+    color: #fff7ed;
+    font-size: 28px;
+}
+
+.feedback-intro {
+    color: #f5e8da;
+    line-height: 1.6;
+}
+
+#feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+#feedback-form label {
+    color: #ffc247;
+    font-weight: bold;
+}
+
+#feedback {
+    width: 100%;
+    min-height: 150px;
+    padding: 14px;
+    border: 1px solid #b87927;
+    border-radius: 6px;
+    background-color: #24140e;
+    color: #fff7ed;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    resize: vertical;
+}
+
+#feedback::placeholder {
+    color: #d0bca9;
+}
+
+#feedback:focus {
+    outline: 2px solid #ffc247;
+    outline-offset: 2px;
+}
+
+.submit-button {
+    align-self: flex-start;
+    padding: 13px 23px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffc247;
+    color: #24140e;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #ffd477;
+}
+
+.success-message {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #83a94c;
+    border-radius: 6px;
+    background-color: #26351a;
+    color: #f3ffe6;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+    .contact-page {
+        padding: 30px 5% 45px;
+    }
+
+    .contact-heading h1 {
+        font-size: 34px;
+    }
+
+    .contact-details,
+    .feedback-section {
+        padding: 22px;
+    }
+
+    .contact-information {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+}
