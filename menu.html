@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maqsad Dhaba | Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Same navigation bar used on the homepage -->
+    <header class="site-header">
+        <a class="logo" href="index.html">MAQSAD DHABA</a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a class="active" href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="menu-page">
+        <section class="menu-heading">
+            <p class="eyebrow">FRESHLY PREPARED FOR YOU</p>
+            <h1>Our Menu</h1>
+            <p>Delicious food, made with love.</p>
+        </section>
+
+        <!-- Menu price table comes first -->
+        <section class="price-section">
+            <h2>Food &amp; Prices</h2>
+
+            <div class="table-wrapper">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">Food Item</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Special Biryani</td>
+                            <td>Rs. 450</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Chicken Handi</td>
+                            <td>Rs. 500</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Seekh Kabab (2 pieces)</td>
+                            <td>Rs. 150</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Food photographs and descriptions appear below the table -->
+        <section class="food-section">
+            <h2>Explore Our Dishes</h2>
+
+            <div class="food-grid">
+                <article class="food-card">
+                    <img src="images/special-biryani.jpg"
+                         alt="A serving of special chicken biryani">
+                    <div class="food-card-content">
+                        <h3>Special Biryani</h3>
+                        <p>
+                            Tasty, aromatic biryani prepared with our signature
+                            spices and served with care.
+                        </p>
+                        <p class="food-price">Rs. 450</p>
+                        <button class="order-button" type="button"
+                                onclick="showOrderMessage('Special Biryani')">
+                            Order Now
+                        </button>
+                    </div>
+                </article>
+
+                <article class="food-card">
+                    <img src="images/chicken-handi.jpg"
+                         alt="Chicken handi served in a traditional clay pot">
+                    <div class="food-card-content">
+                        <h3>Chicken Handi</h3>
+                        <p>
+                            Tender chicken cooked in a rich, creamy gravy
+                            with a delicious blend of traditional spices.
+                        </p>
+                        <p class="food-price">Rs. 500</p>
+                        <button class="order-button" type="button"
+                                onclick="showOrderMessage('Chicken Handi')">
+                            Order Now
+                        </button>
+                    </div>
+                </article>
+
+                <article class="food-card">
+                    <img src="images/seekh-kabab.jpg"
+                         alt="Grilled seekh kababs served with chutney">
+                    <div class="food-card-content">
+                        <h3>Seekh Kabab (2 pieces)</h3>
+                        <p>
+                            Juicy, freshly grilled kababs seasoned with
+                            aromatic spices for a smoky, savoury taste.
+                        </p>
+                        <p class="food-price">Rs. 150</p>
+                        <button class="order-button" type="button"
+                                onclick="showOrderMessage('Seekh Kabab')">
+                            Order Now
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Location: G-10 Markaz | Open since 2010</p>
+        <p>&copy; 2026 Maqsad Dhaba. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // This is a temporary message; it does not submit a real order yet.
+        function showOrderMessage(foodName) {
+            alert("You selected " + foodName +
+                  ". Online ordering will be available soon.");
+        }
+    </script>
+
+</body>
+</html>
